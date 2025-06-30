@@ -1,7 +1,11 @@
 import { ProductCard } from './styles'
 import pizzaImage from '../../assets/images/pizza_marguerita.png'
 
-const Product = () => (
+type Props = {
+  setExibicao: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const Product = ({ setExibicao }: Props) => (
   <ProductCard>
     <img src={pizzaImage} alt="" />
     <h4>Pizza Marguerita</h4>
@@ -9,7 +13,7 @@ const Product = () => (
       A clássica Marguerita: molho de tomate suculento, mussarela derretida,
       manjericão fresco e um toque de azeite. Sabor e simplicidade!
     </p>
-    <button>Adicionar ao carrinho</button>
+    <button onClick={() => setExibicao(true)}>Adicionar ao carrinho</button>
   </ProductCard>
 )
 
