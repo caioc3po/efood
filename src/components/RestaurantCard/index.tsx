@@ -3,26 +3,31 @@ import star from '../../assets/images/estrela.png'
 import { Tag } from './styles'
 
 type Restaurant = {
+  id: number
   title: string
-  categories: string[]
   image: string
-  rating: string
+  rating: number
   text: string
+  type: string
+  highlighted: boolean
+  setRestauranteAtual: React.Dispatch<React.SetStateAction<number>>
 }
 
 const RestaurantCard = ({
-  categories,
+  id,
+  type,
+  highlighted,
   image,
   rating,
   text,
-  title
+  title,
+  setRestauranteAtual
 }: Restaurant) => (
   <S.Card>
     <S.Image style={{ backgroundImage: `url(${image})` }}>
       <S.Categories>
-        {categories.map((category) => (
-          <Tag key={category}>{category}</Tag>
-        ))}
+        <Tag>{type[0].toUpperCase() + type.slice(1)}</Tag>
+        {highlighted ? <Tag>Destaque da semana</Tag> : null}
       </S.Categories>
     </S.Image>
     <S.Infos>
@@ -34,7 +39,9 @@ const RestaurantCard = ({
         </S.Rating>
       </div>
       <S.Paragrafo>{text}</S.Paragrafo>
-      <S.Button to="/Perfil">Saiba mais</S.Button>
+      <S.Button onClick={() => setRestauranteAtual(id)} to="/Perfil">
+        Saiba mais
+      </S.Button>
     </S.Infos>
   </S.Card>
 )

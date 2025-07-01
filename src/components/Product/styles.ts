@@ -3,10 +3,12 @@ import styled from 'styled-components'
 export const ProductCard = styled.div`
   background-color: #e66767;
   padding: 8px;
+  position: relative;
+  height: 420px;
 
   img {
-    height: 100%px;
-    width: 100%px;
+    height: 167px;
+    width: 304px;
   }
 
   h4 {
@@ -25,7 +27,7 @@ export const ProductCard = styled.div`
   }
 
   button {
-    width: 100%;
+    width: 304px;
     background-color: #ffebd9;
     font-weight: 700;
     font-size: 14px;
@@ -34,5 +36,8 @@ export const ProductCard = styled.div`
     border: none;
     padding: 4px 0;
     cursor: pointer;
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
   }
 `

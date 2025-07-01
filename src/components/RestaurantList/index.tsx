@@ -1,22 +1,26 @@
 import RestaurantCard from '../RestaurantCard'
 import * as S from './styles'
-import Restaurant from '../../models/Restaurant'
+import { Restaurant } from '../../pages/Home'
 
 type Props = {
   restaurants: Restaurant[]
+  setRestauranteAtual: React.Dispatch<React.SetStateAction<number>>
 }
 
-const RestaurantList = ({ restaurants }: Props) => (
+const RestaurantList = ({ restaurants, setRestauranteAtual }: Props) => (
   <S.Container>
     <S.RestaurantList>
       {restaurants.map((rest) => (
         <RestaurantCard
           key={rest.id}
-          title={rest.title}
-          categories={rest.categories}
-          image={rest.image}
-          rating={rest.rating}
-          text={rest.text}
+          id={rest.id}
+          title={rest.titulo}
+          type={rest.tipo}
+          highlighted={rest.destacado}
+          image={rest.capa}
+          rating={rest.avaliacao}
+          text={rest.descricao}
+          setRestauranteAtual={setRestauranteAtual}
         />
       ))}
     </S.RestaurantList>

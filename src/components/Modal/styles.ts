@@ -43,7 +43,7 @@ export const ProductBanner = styled.div`
   img {
     width: 280px;
     height: 280px;
-    resize: none;
+    object-fit: cover;
   }
   div {
     margin-left: 24px;
