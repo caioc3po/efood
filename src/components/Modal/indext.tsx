@@ -1,38 +1,40 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import * as S from './styles'
-import marguerita from '../../assets/images/marguerita_pequena.png'
 import x from '../../assets/images/close 1.png'
 import { Produto } from '../../pages/Perfil'
+import { add } from '../../store/reducers/cart'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
 
 type Props = {
+  produtoSelecionado: Produto
   exibicao: boolean
   setExibicao: React.Dispatch<React.SetStateAction<boolean>>
-  produtoSelecionado: number
-  produtos: Produto[]
+  addToCart: () => void
 }
 
 const Modal = ({
   exibicao,
   setExibicao,
   produtoSelecionado,
-  produtos
+  addToCart
 }: Props) => {
-  const produto = produtos.find((prod) => prod.id === produtoSelecionado)
-
   return (
     <S.Modal style={{ display: exibicao ? 'flex' : 'none' }}>
       <S.ProductBanner>
         <img src={x} className="X-img" onClick={() => setExibicao(false)} />
-        <img src={produto?.foto} alt="Pizza Marguerita" />
+        <img src={produtoSelecionado?.foto} alt="Pizza Marguerita" />
         <div>
-          <h4>{produto?.nome}</h4>
+          <h4>{produtoSelecionado?.nome}</h4>
           <p>
-            {produto?.descricao}
+            {produtoSelecionado?.descricao}
             <br />
             <br />
-            {produto?.porcao}
+            {produtoSelecionado?.porcao}
           </p>
-          <button>Adicionar ao carrinho - R$ {produto?.preco}0</button>
+          <button onClick={addToCart}>
+            Adicionar ao carrinho - R$ {produtoSelecionado?.preco}0
+          </button>
         </div>
       </S.ProductBanner>
       <div onClick={() => setExibicao(false)} className="overlay"></div>

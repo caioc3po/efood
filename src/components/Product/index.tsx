@@ -1,3 +1,5 @@
+import { SetStateAction } from 'react'
+import { Produto } from '../../pages/Perfil'
 import { ProductCard } from './styles'
 
 type Props = {
@@ -6,7 +8,8 @@ type Props = {
   nome: string
   descricao: string
   id: number
-  setProdutoSelecionado: React.Dispatch<React.SetStateAction<number>>
+  setProdutoSelecionado: React.Dispatch<SetStateAction<Produto>>
+  produtos: Produto[]
 }
 
 const Product = ({
@@ -15,7 +18,8 @@ const Product = ({
   foto,
   nome,
   setProdutoSelecionado,
-  id
+  id,
+  produtos
 }: Props) => (
   <ProductCard>
     <img src={foto} alt="" />
@@ -24,7 +28,7 @@ const Product = ({
     <button
       onClick={() => {
         setExibicao(true)
-        setProdutoSelecionado(id)
+        setProdutoSelecionado(produtos.find((p) => p.id === id)!)
       }}
     >
       Adicionar ao carrinho

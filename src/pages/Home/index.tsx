@@ -2,6 +2,8 @@ import Header from '../../components/Header'
 import RestaurantList from '../../components/RestaurantList'
 import { useEffect, useState } from 'react'
 
+import { useGetFeaturedProductQuery } from '../../services/api'
+
 export type Restaurant = {
   id: number
   titulo: string
@@ -27,6 +29,8 @@ type Props = {
 }
 
 const Home = ({ setRestauranteAtual }: Props) => {
+  const { data, isLoading } = useGetFeaturedProductQuery()
+
   const [restaurants, setRestaurants] = useState<Restaurant[]>([])
 
   useEffect(() => {

@@ -2,12 +2,22 @@ import { Link } from 'react-router-dom'
 import logo from '../../assets/images/efood_logo.png'
 import background from '../../assets/images/header_background.png'
 import * as S from './styles'
+import { open } from '../../store/reducers/cart'
+import { useDispatch } from 'react-redux'
+import { Produto } from '../../pages/Perfil'
 
 export type Props = {
   exhibition: 'home' | 'perfil'
+  items?: Produto[]
 }
 
-const Header = ({ exhibition }: Props) => {
+const Header = ({ exhibition, items }: Props) => {
+  const dispatch = useDispatch()
+
+  const openCart = () => {
+    dispatch(open())
+  }
+
   if (exhibition === 'home') {
     return (
       <S.Header
@@ -35,7 +45,9 @@ const Header = ({ exhibition }: Props) => {
         <Link className="link" to="/">
           <img src={logo} alt="Logo" />
         </Link>
-        <h3 className="right">0 produto(s) no carrinho</h3>
+        <h3 onClick={openCart} className="right">
+          {items === undefined ? '0' : items.length} produto(s) no carrinho
+        </h3>
       </div>
     </S.Header>
   )
