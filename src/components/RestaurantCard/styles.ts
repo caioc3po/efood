@@ -26,6 +26,7 @@ export const Image = styled.div`
   width: 100%;
   height: 217px;
   display: block;
+  background-size: cover;
 `
 
 export const Paragrafo = styled.p`

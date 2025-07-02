@@ -9,6 +9,7 @@ export const ProductCard = styled.div`
   img {
     height: 167px;
     width: 304px;
+    object-fit: cover;
   }
 
   h4 {
