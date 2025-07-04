@@ -5,6 +5,7 @@ export const BannerImg = styled.div`
   height: 280px;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   display: block;
   position: relative;
 

@@ -1,11 +1,19 @@
 import * as S from './styles'
 import background from '../../assets/images/banner_img.png'
 
-const Banner = () => (
-  <S.BannerImg style={{ backgroundImage: `url(${background})` }}>
+type Props = {
+  tipo: string
+  titulo: string
+  capa: string
+}
+
+const Banner = ({ tipo, titulo, capa }: Props) => (
+  <S.BannerImg style={{ backgroundImage: `url(${capa})` }}>
     <div className="container">
-      <S.BannerUpperText>Italiana</S.BannerUpperText>
-      <S.BannerLowerText>La dolce Vita Trattoria</S.BannerLowerText>
+      <S.BannerUpperText>
+        {tipo ? tipo[0].toUpperCase() + tipo.slice(1) : ''}
+      </S.BannerUpperText>
+      <S.BannerLowerText>{titulo}</S.BannerLowerText>
     </div>
   </S.BannerImg>
 )

@@ -24,6 +24,11 @@ export type Produto = {
 const Perfil = ({ restauranteAtual }: Props) => {
   const [exibicao, setExibicao] = useState(false)
   const [produtos, setProdutos] = useState<Produto[]>([])
+  const [restauranteAtualInfos, setRestauranteAtualInfos] = useState({
+    tipo: '',
+    titulo: '',
+    capa: ''
+  })
   const [produtoSelecionado, setProdutoSelecionado] = useState<Produto>({
     descricao: '',
     foto: '',
@@ -38,7 +43,14 @@ const Perfil = ({ restauranteAtual }: Props) => {
       `https://fake-api-tau.vercel.app/api/efood/restaurantes/${restauranteAtual}`
     )
       .then((res) => res.json())
-      .then((res) => setProdutos(res.cardapio))
+      .then((res) => {
+        setProdutos(res.cardapio)
+        setRestauranteAtualInfos({
+          tipo: res.tipo,
+          titulo: res.titulo,
+          capa: res.capa
+        })
+      })
   }, [])
 
   const dispatch = useDispatch()
@@ -53,7 +65,11 @@ const Perfil = ({ restauranteAtual }: Props) => {
   return (
     <>
       <Header items={items} exhibition="perfil" />
-      <Banner />
+      <Banner
+        tipo={restauranteAtualInfos.tipo}
+        titulo={restauranteAtualInfos.titulo}
+        capa={restauranteAtualInfos.capa}
+      />
       <ProductsList
         setProdutoSelecionado={setProdutoSelecionado}
         produtos={produtos}

@@ -44,6 +44,7 @@ export const Header = styled.div<Props>`
       .right {
         position: absolute;
         right: 0px;
+        cursor: pointer;
       }
 
       .link {

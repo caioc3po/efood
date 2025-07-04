@@ -16,7 +16,12 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     add: (state, action: PayloadAction<Produto>) => {
-      state.items.push(action.payload)
+      const jaExiste = state.items.some((item) => item.id === action.payload.id)
+      if (!jaExiste) {
+        state.items.push(action.payload)
+      } else {
+        alert('Este item já está no carrinho')
+      }
     },
     remove: (state, action: PayloadAction<number>) => {
       state.items = state.items.filter((item) => item.id !== action.payload)

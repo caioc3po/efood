@@ -37,7 +37,12 @@ const Carrinho = () => {
                 <img src={item.foto} alt="" />
                 <div>
                   <h5>{item.nome}</h5>
-                  <p>R$ {item.preco}0</p>
+                  <p>
+                    {new Intl.NumberFormat('pt-BR', {
+                      style: 'currency',
+                      currency: 'BRL'
+                    }).format(item.preco)}
+                  </p>
                 </div>
                 <img
                   onClick={() => removeItem(item.id)}
@@ -51,7 +56,12 @@ const Carrinho = () => {
         </div>
         <div className="totalValue">
           <h6>Valor total</h6>
-          <h6>R$ {getTotalPrice()}0</h6>
+          <h6>
+            {new Intl.NumberFormat('pt-BR', {
+              style: 'currency',
+              currency: 'BRL'
+            }).format(getTotalPrice())}
+          </h6>
         </div>
         <button>Continuar com a entrega</button>
       </S.Carrinho>
