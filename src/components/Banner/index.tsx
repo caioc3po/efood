@@ -15,6 +15,7 @@ const Banner = ({ tipo, titulo, capa }: Props) => (
       </S.BannerUpperText>
       <S.BannerLowerText>{titulo}</S.BannerLowerText>
     </div>
+    <div className="overlay"></div>
   </S.BannerImg>
 )
 

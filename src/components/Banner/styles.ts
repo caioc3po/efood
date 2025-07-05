@@ -9,6 +9,12 @@ export const BannerImg = styled.div`
   display: block;
   position: relative;
 
+  .overlay {
+    background-color: #00000080;
+    width: 100%;
+    height: 100%;
+  }
+
   .container {
     max-width: 1024px;
     width: 100%;
