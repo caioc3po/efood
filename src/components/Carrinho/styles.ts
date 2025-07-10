@@ -30,6 +30,7 @@ export const Carrinho = styled.div`
     padding: 4px;
     font-weight: 700;
     font-size: 14px;
+    cursor: pointer;
   }
 
   h6 {

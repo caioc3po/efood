@@ -2,9 +2,6 @@
 import * as S from './styles'
 import x from '../../assets/images/close 1.png'
 import { Produto } from '../../pages/Perfil'
-import { add } from '../../store/reducers/cart'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootReducer } from '../../store'
 
 type Props = {
   produtoSelecionado: Produto

@@ -28,6 +28,7 @@ const Product = ({
     <button
       onClick={() => {
         setExibicao(true)
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         setProdutoSelecionado(produtos.find((p) => p.id === id)!)
       }}
     >

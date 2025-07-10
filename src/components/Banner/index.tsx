@@ -1,5 +1,4 @@
 import * as S from './styles'
-import background from '../../assets/images/banner_img.png'
 
 type Props = {
   tipo: string

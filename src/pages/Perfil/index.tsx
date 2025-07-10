@@ -1,4 +1,4 @@
-import { SetStateAction, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Banner from '../../components/Banner'
 import Header from '../../components/Header'
 import Modal from '../../components/Modal/indext'
@@ -7,7 +7,6 @@ import Carrinho from '../../components/Carrinho'
 import { add, open } from '../../store/reducers/cart'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
-
 type Props = {
   restauranteAtual: number
 }
@@ -51,7 +50,7 @@ const Perfil = ({ restauranteAtual }: Props) => {
           capa: res.capa
         })
       })
-  }, [])
+  }, [restauranteAtual])
 
   const dispatch = useDispatch()
   const { items } = useSelector((state: RootReducer) => state.cart)
